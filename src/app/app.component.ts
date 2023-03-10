@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Mis Primeras Pruebas Unitarias';
+
+  sum(num1:number, num2:number) : number {
+    return num1 + num2;
+  }
 }

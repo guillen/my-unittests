@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let app:AppComponent;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -12,24 +14,30 @@ describe('AppComponent', () => {
         AppComponent
       ],
     }).compileComponents();
+    const fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('Sumar dos números', () => {
+    //Arrange (implicit in beforeEach)
+    //Act and Assert
+    expect(app.sum(10, 30)).toBe(40);
   });
 
-  it(`should have as title 'my-unittests'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('my-unittests');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('my-unittests app is running!');
+  xit('Ejemplos de validaciones', () => {
+    expect(true).toBeTrue();
+    expect(1).toBeTruthy();
+    expect(false).toBeFalse();
+    expect(0).toBeFalsy();
+    expect(null).toBeNull();
+    let obj: {a:number,b?:number} = {
+      a: 1,
+    }
+    expect(obj.a).toBeDefined();
+    expect(obj.b).toBeUndefined();
+    expect(10).toBeGreaterThan(5);
+    expect(10).toBeGreaterThanOrEqual(10);
+    expect(10).toBeLessThan(20);
+    expect(10).toBeLessThanOrEqual(10);
   });
 });
